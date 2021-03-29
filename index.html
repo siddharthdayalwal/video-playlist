@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Videogular - Creating a Simple Playlist</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div ng-app="myApp">
+<div ng-controller="HomeCtrl as controller">
+	<div class="videogular-container">
+		<videogular vg-player-ready="controller.onPlayerReady($API)" vg-complete="controller.onCompleteVideo()" vg-theme="controller.config.theme.url">
+			<vg-media vg-src="controller.config.sources"
+					  vg-tracks="controller.config.tracks">
+			</vg-media>
+
+			<vg-controls>
+				<vg-play-pause-button></vg-play-pause-button>
+				<vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+				<vg-scrub-bar>
+					<vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+				</vg-scrub-bar>
+				<vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+				<vg-volume>
+					<vg-mute-button></vg-mute-button>
+					<vg-volume-bar></vg-volume-bar>
+				</vg-volume>
+				<vg-fullscreen-button></vg-fullscreen-button>
+			</vg-controls>
+
+			<vg-overlay-play></vg-overlay-play>
+			<vg-buffering></vg-buffering>
+			<vg-poster vg-url='controller.config.plugins.poster'></vg-poster>
+		</videogular>
+	</div>
+	<div class="playlist">
+		<ul>
+			<li><a ng-click="controller.setVideo(0)">Pale Blue Dot</a></li>
+			<li><a ng-click="controller.setVideo(1)">Big Buck Bunny</a></li>
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.min.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/videogular/videogular.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/controls/vg-controls.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/overlay-play/vg-overlay-play.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/poster/vg-poster.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/buffering/vg-buffering.js"></script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
